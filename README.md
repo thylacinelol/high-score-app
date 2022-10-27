@@ -2,6 +2,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Production version
 
+App is hosted at [https://high-score-app.vercel.app/](https://high-score-app.vercel.app/).
+
 ## Getting Started
 
 First, run the development server:
