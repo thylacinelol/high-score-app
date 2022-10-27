@@ -1,4 +1,5 @@
 import { useState, Component } from "react";
+import styles from "../styles/Game.module.css";
 
 const initialState = {
   name: null,
@@ -104,53 +105,66 @@ class Game extends Component {
   render() {
     return (
       <>
-        <div>
+        <div className={styles.text}>
           Total points:{" "}
           <span data-cy="totalPoints">{this.state.totalPoints}</span>
         </div>
-        <div>Clicks: {this.state.clicks} / 10</div>
+        <div className={styles.text}>Clicks: {this.state.clicks} / 10</div>
 
         {!this.state.showSubmitScoreForm && (
-          <>
+          <div className={styles.verticalContainer}>
             <button
+              className={styles.button}
               type="button"
               onClick={this.roll}
               disabled={!this.isAttemptAllowed()}
             >
               Attempt
             </button>
-            <button
-              type="button"
-              onClick={this.showSubmitScoreForm}
-              disabled={this.state.clicks == 0}
-            >
-              Submit score
-            </button>
-            <button
-              type="button"
-              onClick={this.resetState}
-              disabled={this.state.clicks == 0}
-            >
-              Try again
-            </button>
-          </>
+            <div className={styles.horizontalContainer}>
+              <button
+                className={styles.button}
+                type="button"
+                onClick={this.showSubmitScoreForm}
+                disabled={this.state.clicks == 0}
+              >
+                Submit score
+              </button>
+              <button
+                className={styles.button}
+                type="button"
+                onClick={this.resetState}
+                disabled={this.state.clicks == 0}
+              >
+                Try again
+              </button>
+            </div>
+          </div>
         )}
 
         {this.state.showSubmitScoreForm && (
-          <form onSubmit={this.submitScore}>
-            <label htmlFor="name">Name:</label>
+          <form
+            onSubmit={this.submitScore}
+            className={styles.verticalContainer}
+          >
             <input
+              className={styles.nameInput}
               onChange={this.handleNameChange}
               type="text"
               id="name"
               name="name"
+              placeholder="Your Name"
               required
             />
-            <button type="submit">Submit</button>
+            <div className={styles.formActions}>
+              <button type="submit" className={styles.button}>
+                Submit
+              </button>
+            </div>
           </form>
         )}
 
-        <div>
+        <div className={styles.container}>
           <h2>Leaderboard</h2>
           <table>
             <thead>
