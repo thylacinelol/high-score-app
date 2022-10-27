@@ -15,7 +15,7 @@ export default function Home() {
         <h1 className={styles.title}>Welcome to HighScoreApp!</h1>
 
         <p className={styles.description}>
-          Click "attempt" to roll the dice up to 10 times.
+          Click &quot;attempt&quot; to roll the dice up to 10 times.
         </p>
 
         <Game></Game>
